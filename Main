@@ -1,0 +1,38 @@
+package me.yuzko.mc.server;
+
+import java.util.logging.Logger;
+
+import org.bukkit.plugin.PluginDescriptionFile;
+import org.bukkit.plugin.PluginManager;
+import org.bukkit.plugin.java.JavaPlugin;
+  
+	public class Main extends JavaPlugin {
+		
+		public static Main plugin;
+		public static Logger logger = Logger.getLogger("Minecraft");
+		public final AdminOn aon = new AdminOn();
+		public final AdminOff aof = new AdminOff();
+		
+		@Override
+		public void onDisable() {
+
+			PluginDescriptionFile pdffile = this.getDescription();
+			this.logger.info(pdffile.getName() + " Has been enabled!");
+
+		}
+
+		@Override
+		public void onEnable() {
+			PluginDescriptionFile pdffile = this.getDescription();
+			this.logger.info(pdffile.getName() + " Version " + pdffile.getVersion()
+					+ " Has been enabled!");
+			PluginManager pm = this.getServer().getPluginManager();
+			pm.registerEvents(this.aon, this);
+			pm.registerEvents(this.aof, this);
+
+			
+			// to register events
+
+		}
+		
+}
