@@ -1,0 +1,9 @@
+name: YuzkoHam
+main: me.yuzko.mc.server.Main
+version: 1.0
+description: >
+               YuzkoHam plugin
+commands:
+  x:
+    description: Admin mode on or off 
+  
