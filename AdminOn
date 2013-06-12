@@ -1,0 +1,48 @@
+package me.yuzko.mc.server;
+
+import org.bukkit.ChatColor;
+import org.bukkit.GameMode;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+
+public class AdminOn implements Listener {
+  
+	@EventHandler
+	
+	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
+		
+		if(sender instanceof Player) {
+			
+			Player player = (Player) sender;
+			
+			if(args.length == 1) {
+				player.sendMessage(ChatColor.RED + "[" + ChatColor.GOLD + "+" + ChatColor.RED + "] " + ChatColor.DARK_BLUE + "Invalid command, please use " + ChatColor.BLUE + "/x <on|off>" + ChatColor.DARK_BLUE + ".");
+				
+			}
+			
+			else if(args.length == 0) {
+				if(commandLabel.equalsIgnoreCase("x")) {
+					if(args[0].equalsIgnoreCase("on")) {
+						
+						((Player) sender).setGameMode(GameMode.CREATIVE);
+						
+						player.sendMessage(ChatColor.DARK_BLUE + "Admin mode " + ChatColor.BLUE + "enabled" + ChatColor.DARK_BLUE + ".");
+
+					}
+					
+				}
+			}
+			
+			
+			
+		}
+		return false;
+		
+		
+		
+	}
+
+}
